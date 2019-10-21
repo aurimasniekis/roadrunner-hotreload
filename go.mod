@@ -1,4 +1,4 @@
-module roadrunner-hotreload
+module github.com/aurimasniekis/roadrunner-hotreload
 
 require (
 	github.com/radovskyb/watcher v1.0.6
