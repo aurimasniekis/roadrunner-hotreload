@@ -7,7 +7,7 @@ import (
 
 type Config struct {
 	Enable bool
-	Path   string
+	Paths  []string
 	Files  string
 	Tick   *time.Duration
 }
@@ -18,8 +18,10 @@ func (c *Config) Hydrate(cfg service.Config) error {
 		return err
 	}
 
-	if len(c.Path) == 0 {
-		c.Path = "."
+	if c.Paths == nil || len(c.Paths) < 1 {
+		c.Paths = []string{
+			".",
+		}
 	}
 	if len(c.Files) == 0 {
 		c.Files = "*.php"

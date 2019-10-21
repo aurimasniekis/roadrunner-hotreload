@@ -54,8 +54,10 @@ func (s *Service) Init(config *Config) (bool, error) {
 		}
 	}()
 
-	if err := w.AddRecursive(config.Path); err != nil {
-		log.Fatalln(err)
+	for _, path := range config.Paths {
+		if err := w.AddRecursive(path); err != nil {
+			log.Fatalln(err)
+		}
 	}
 
 	go func() {
